@@ -27,6 +27,10 @@ RUN adduser --system --group --disabled-password monero && \
 VOLUME /home/monero/.bitmonero
 VOLUME /wallet
 
+# Download and copy block.txt to block known-malicious hosts
+RUN wget https://gui.xmr.pm/files/block.txt
+RUN mv block.txt /home/monero/.bitmonero/block.txt
+
 EXPOSE 18080
 EXPOSE 18081
 EXPOSE 18082
